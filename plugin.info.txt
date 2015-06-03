@@ -1,0 +1,7 @@
+base    ajaxrpc
+author  iamchenxin
+email
+date    2015-05-29
+name    ajaxrpc
+desc    ajaxrpc
+url     http://dokuwiki.org/plugin:ajaxrpc
