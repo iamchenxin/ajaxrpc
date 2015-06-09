@@ -36,20 +36,18 @@ function ajax_xcall(method,params,callback,id,type){
     jQuery.ajax({type:type,url:url,data:mdata,success:callback,dataType:"json"});
 }
 
-
-function test1(){
+function ajax_batchcall(request_list_arr,callback,type){
+    if(type!=true){
+        type="POST";
+    }
     var url = DOKU_BASE + 'lib/exe/ajax.php';
-
-    var mdata=new Object();
-    mdata['call']="jsonrpc";
-//    mdata['request']='{"jsonrpc":"1.0","method":"dokuwiki.appendPage","params":["贷款","\\\\\\\\\n来自ajaxrpc",{"sum":"from ajax"}],"id": 3}';
-//    mdata['request'] = {jsonrpc:"2.0",method:"plugin.ajaxrpc.test",params:["hello,i am newnewnewnew"],id: 6};
-    mdata['request']='{"jsonrpc":"2.0","method":"dokuwiki.getVersion","params":[],"id": 3}';
-//    mdata['request']='test';
-//    jQuery.ajax({url:url,data:mdata,success:xxajax_process,dataType:"jsonp",crossDomain:true});
-    jQuery.ajax({type:'POST',url:url,data:JSON.stringify(mdata),success:xxajax_process,dataType:"json",crossDomain:true});
-
+    var mdata = {
+        call:"jsonrpc",
+        request:JSON.stringify(request_list_arr)
+    };
+    jQuery.ajax({type:type,url:url,data:mdata,success:callback,dataType:"json"});
 }
+
 
 function test2(){
 //    ajax_xcall("dokuwiki.getVersion",[],xxajax_process);
@@ -60,7 +58,6 @@ function test2(){
 
 function xxinit_ff(){
 
-    test2();
 }
 
 jQuery(xxinit_ff);
